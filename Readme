@@ -1,1 +1,7 @@
-Gii
+REST APIs embed resource identifiers in URI templates, and missing per-object ownership checks enable at- tackers to retrieve arbitrary users’ data—Broken Object Level Authorization (BOLA), ranked first in the OWASP API Security Top 10 for three cycles. 
+Dynamic scanners require live sessions; rule-based linters inspect fields in isolation. BOLADetect is a su- pervised learning pipeline that flags BOLA-susceptible endpoints from static OpenAPI 2.x/3.x specification files before backend exe- cution. 
+Each endpoint is encoded as a 17-dimensional feature vec-tor capturing authorization signals, URI patterns, HTTP method risk, identifier co-occurrence, sibling cardinality, and a nor-malized Isolation Forest anomaly score. Ground-truth positives come from six intentionally vulnerable API repositories—VAmPI, crAPI, DVWS, JuiceShop, VAPI, Vuln-Bank—forming a bal- anced 1,760-sample gold test set, while 61,234 endpoints from the APIs.guru corpus supply a weakly labeled training pool via a heuristic scoring function. 
+GroupKFold cross-validation partitions data by source file to prevent API-level leakage. 
+Three classifiers are benchmarked: Logistic Regression, Random Forest, and XGBoost. 
+At a calibrated threshold of 0.612, XGBoost achieves an F1-score of 84.09%, precision of 78.15%, and recall of 91.02%, outperforming baselines by 4.4–6.0 F1 points. 
+SHAP attribution shows that identifier presence, missing authorization, and HTTP method severity are the three most influential features, confirming that pre-deployment, specification-only analysis is a viable complement to dynamic security testing.
